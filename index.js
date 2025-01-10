@@ -1,3 +1,4 @@
+// Configuramos la fecha objetivo inicial
 const targetDate = new Date("2025-01-14T00:00:00").getTime();
 
 let lastValues = {
@@ -26,6 +27,7 @@ function updateCounter() {
     if (distance <= 0 && new Date().getDate() === 14) {
         stopCounter = true;
         setToZero();
+        changeH2(meses); // Actualizamos el texto del H2
         setTimeout(() => {
             stopCounter = false;
             targetDate += 30 * 24 * 60 * 60 * 1000; // Actualiza la fecha objetivo al próximo mes
@@ -40,7 +42,6 @@ function updateCounter() {
     updateDigit("seconds", seconds);
 
     meses = updateMeses(); // Actualizamos el valor de meses
-    changeH2(meses); // Pasamos meses como parámetro
 }
 
 function setToZero() {
