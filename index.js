@@ -7,7 +7,13 @@ let lastValues = {
     seconds: null
 };
 
+let meses = 10; // Variable global para meses
+let ejecucionMensual = 0; // Control para la ejecución mensual
+let stopCounter = false; // Variable para detener el contador
+
 function updateCounter() {
+    if (stopCounter) return; // Detenemos la ejecución si corresponde
+
     const now = new Date().getTime();
     const distance = targetDate - now;
 
@@ -16,30 +22,77 @@ function updateCounter() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    // Si es el día 14 y el tiempo restante es 0 o menor, detenemos el contador
+    if (distance <= 0 && new Date().getDate() === 14) {
+        stopCounter = true;
+        setToZero();
+        setTimeout(() => {
+            stopCounter = false;
+            targetDate += 30 * 24 * 60 * 60 * 1000; // Actualiza la fecha objetivo al próximo mes
+        }, calculateTimeUntilMidnight());
+        return;
+    }
+
     // Actualizamos los dígitos solo si hay un cambio
     updateDigit("days", days);
     updateDigit("hours", hours);
     updateDigit("minutes", minutes);
     updateDigit("seconds", seconds);
+
+    meses = updateMeses(); // Actualizamos el valor de meses
+    changeH2(meses); // Pasamos meses como parámetro
+}
+
+function setToZero() {
+    updateDigit("days", 0);
+    updateDigit("hours", 0);
+    updateDigit("minutes", 0);
+    updateDigit("seconds", 0);
+}
+
+function calculateTimeUntilMidnight() {
+    const now = new Date();
+    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+    return midnight - now;
 }
 
 function updateDigit(id, value) {
     const digitElement = document.getElementById(id);
     const newValue = value < 10 ? "0" + value : value;
 
-    // Solo aplicamos el efecto si el valor ha cambiado
     if (lastValues[id] !== newValue) {
         digitElement.classList.add("flip");
         digitElement.innerText = newValue;
 
-        // Removemos la clase flip después de la animación
         setTimeout(() => {
             digitElement.classList.remove("flip");
-        }, 600); // Debe coincidir con la duración de la animación
+        }, 600);
 
-        // Actualizamos el último valor
         lastValues[id] = newValue;
     }
 }
 
+function changeH2(meses) {
+    const diaDelMes = new Date().getDate();
+    const h2 = document.querySelector('h2');
+
+    if (diaDelMes === 14) {
+        h2.textContent = `¡Felices ${meses} meses!`;
+    }
+}
+
+function updateMeses() {
+    const diaDelMes = new Date().getDate();
+
+    if (diaDelMes === 14 && ejecucionMensual === 0) {
+        meses++;
+        ejecucionMensual = 1;
+    } else if (diaDelMes === 1) {
+        ejecucionMensual = 0;
+    }
+
+    return meses;
+}
+
+// Iniciar el contador cada segundo
 setInterval(updateCounter, 1000);
