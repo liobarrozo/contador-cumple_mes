@@ -1,4 +1,12 @@
-
+header{
+    background-color: #CDB4DB;
+    width: 100vw;
+    display: flex;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+   
+}
 body{
     background-color: #F2D4D6;
     font-family: 'Roboto', sans-serif;
@@ -7,18 +15,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
 }
 
-header{
-    background-color: #CDB4DB;
-    width: 100vw;
-    display: flex;
-    height: 18%;
-    align-items: center;
-    justify-content: center;
-   
-}
+
 
 .div-h1{
     width: 70%;
@@ -26,6 +25,7 @@ header{
 
 h1{
     font-size: 2em;
+    font-weight: 700;
     font-family: "Montserrat", serif;
     text-align: center;
     color: black;
@@ -41,8 +41,51 @@ h1{
     height: 90px;
 }
 
+/*Globos*/
+/* Contenedor de globos */
+#globos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  /* Estilo de los globos */
+  .globo {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 80px;
+    background-color: red;
+    border-radius: 50%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    animation: subir 5s ease-in infinite;
+  }
+  
+  /* Animación para que los globos suban */
+  @keyframes subir {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+/*Contador*/  
+
+#section-contador{
+    height: 85vh;
+}
+
 h2{
     font-family: "Montserrat", serif;
+    font-weight: 600;
+    font-size: 2.2em;
+    text-align: center;
+    margin: 25px;
 
 }
 .contador{
@@ -107,4 +150,75 @@ h2{
         transform: rotateX(0); 
         color: #fff; /* Volvemos al color original al final */
     }
+}
+
+
+.post__counter{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#text__post-counter{
+    width: 70%;
+    text-align: center;
+}
+
+#gif-heart{
+    width: 250px;
+    height: 250px;
+}
+
+
+
+.reproductor{
+    background-color: #FFAFCC;
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+h3{
+    font-family: "Montserrat", serif;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+.album-image{
+    width: 60vw;
+    height: auto;
+    margin: 25px;
+}
+
+#toggleMusica{
+    font-size: 18px;
+    width: 105px;
+    height: 40px;
+    background-color: yellow;
+    border: orange 3px solid;
+}
+
+footer{
+    width: 100%;
+    height: 30vw;
+    background-color: #CDB4DB;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#text-footer{
+    font-family: "Montserrat", serif;
+    font-size: 1em;
+    
+    text-align: center;
+    color: black;
+}
+
+#instagram{
+    color: #101820;
 }
