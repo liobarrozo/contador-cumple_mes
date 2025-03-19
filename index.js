@@ -10,7 +10,7 @@ let lastValues = {
   seconds: null,
 };
 
-let meses = 10; // Variable global para meses
+let meses = 13; // Variable global para meses
 let ejecucionMensual = 0; // Control para la ejecución mensual
 let stopCounter = false; // Variable para detener el contador
 
