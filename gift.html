@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regalito</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./src/gift.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./index.css" />
+    <script async src="./popUp.js"></script>
+    <script async src="./verification.js"></script>
+  </head>
+  <body>
+    <h1>Sorpresa!</h1>
+    <section id="presentation">
+      <h2>Parece que tu regalo está bloqueado</h2>
+      <img
+        src="./src/candado.png"
+        id="candado"
+        onclick="mostrarPopup()"
+        alt=""
+      />
+      <p id="candado-desc">Presioná el candado.</p>
+    </section>
+    <form id="formulario-gift">
+      <label for="pregunta1"
+        >Pregunta 1: ¿En que película nos dimos nuestro primer beso?</label
+      >
+      <input type="text" id="pregunta1" required />
+
+      <label for="">Pregunta 2: ¿Cual es mi color favorito?</label>
+      <input type="text" id="pregunta2" required />
+
+      <button type="button" onclick="verificarRespuestas()">Enviar</button>
+    </form>
+
+    <div id="contenido-revelado">
+      <h2>Regalo desbloqueado!</h2>
+      <img src="./src/flores-amarillas.png" id="flores-amarillas" />
+      <audio
+        id="flores-amarillas.mp3"
+        src="./src/flores-amarillas.mp3"
+        autoplay
+      ></audio>
+    </div>
+  </body>
+  <footer>
+    <p id="text-footer">
+      Hecho con mucho amor por
+      <a id="instagram" href="https://www.instagram.com/liobarrozo/"
+        >@liobarrozo</a
+      >
+      <3
+    </p>
+  </footer>
+</html>
